@@ -1,7 +1,10 @@
 package io.github.longclipeus.iotsystems.view.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -9,7 +12,9 @@ import android.widget.Toast;
 import io.github.longclipeus.iotsystems.R;
 import io.github.longclipeus.iotsystems.presenter.NetworkConnectIm;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity
+        implements View.OnClickListener,
+        NavigationView.OnNavigationItemSelectedListener {
 
     private RelativeLayout mTemperature;
     private RelativeLayout mHumidity;
@@ -22,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         boolean isConnected = new NetworkConnectIm(this).isNetworkConnected();
         if (!isConnected) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_internet, Toast.LENGTH_SHORT).show();
         }
 
         initView();
@@ -58,5 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }

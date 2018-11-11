@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--fragment_setting-->
+    <integer-array name="icon_settings">
+        <item>@drawable/ic_screen_lock_portrait</item>
+    </integer-array>
+
+    <string-array name="text_settings">
+        <item>Lock screen</item>
+    </string-array>
+</resources>

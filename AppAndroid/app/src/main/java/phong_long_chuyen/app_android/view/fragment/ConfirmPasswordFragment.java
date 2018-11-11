@@ -17,8 +17,8 @@ import android.widget.Toast;
 import phong_long_chuyen.app_android.R;
 import phong_long_chuyen.app_android.presenter.PasswordPreIm;
 
-import static phong_long_chuyen.app_android.config.Define.CREATE_PASSWORD_FRAGMENT;
-import static phong_long_chuyen.app_android.config.Define.TAG_CREATE_PASSWORD_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.STACK_CREATE_PASSWORD_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.TRAN_CREATE_PASSWORD_FRAGMENT;
 
 public class ConfirmPasswordFragment extends Fragment implements View.OnClickListener {
 
@@ -114,8 +114,8 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
                         FragmentManager fragmentManager = this.getFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.frame_setting, new CreatePasswordFragment(),
-                                TAG_CREATE_PASSWORD_FRAGMENT);
-                        fragmentTransaction.addToBackStack(CREATE_PASSWORD_FRAGMENT);
+                                TRAN_CREATE_PASSWORD_FRAGMENT);
+                        fragmentTransaction.addToBackStack(STACK_CREATE_PASSWORD_FRAGMENT);
                         fragmentTransaction.commit();
 
                     }
@@ -137,4 +137,11 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
             mEdConfirmPassword.setText(passWd);
         }
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        getFragmentManager().popBackStack();
+    }
+
 }

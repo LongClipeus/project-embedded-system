@@ -20,8 +20,8 @@ import phong_long_chuyen.app_android.R;
 import phong_long_chuyen.app_android.adapter.SettingListAdapter;
 import phong_long_chuyen.app_android.model.entity.SettingEntity;
 
-import static phong_long_chuyen.app_android.config.Define.CREATE_PASSWORD_FRAGMENT;
-import static phong_long_chuyen.app_android.config.Define.TAG_CREATE_PASSWORD_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.STACK_CREATE_PASSWORD_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.TRAN_CREATE_PASSWORD_FRAGMENT;
 
 public class LockScreenFragment extends Fragment {
 
@@ -78,8 +78,8 @@ public class LockScreenFragment extends Fragment {
                 switch (index) {
                     case 0: {
                         mFragmentTransaction.replace(R.id.frame_setting,
-                                new CreatePasswordFragment(), TAG_CREATE_PASSWORD_FRAGMENT);
-                        mFragmentTransaction.addToBackStack(CREATE_PASSWORD_FRAGMENT);
+                                new CreatePasswordFragment(), TRAN_CREATE_PASSWORD_FRAGMENT);
+                        mFragmentTransaction.addToBackStack(STACK_CREATE_PASSWORD_FRAGMENT);
                         mFragmentTransaction.commit();
                         break;
                     }
@@ -95,6 +95,12 @@ public class LockScreenFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        getFragmentManager().popBackStack();
     }
 
 }

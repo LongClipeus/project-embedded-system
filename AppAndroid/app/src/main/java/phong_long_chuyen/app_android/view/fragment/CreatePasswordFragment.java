@@ -90,6 +90,7 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
         mBtn_8.setOnClickListener((View.OnClickListener) mContext);
         mBtn_9.setOnClickListener((View.OnClickListener) mContext);
         mBtn_0.setOnClickListener((View.OnClickListener) mContext);
+        mBtnOk.setOnClickListener((View.OnClickListener) mContext);
     }
 
     @Override
@@ -150,4 +151,11 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
             }
         }
     }
+
+    @Override
+    public void onDetach() {
+        getFragmentManager().popBackStack();
+        super.onDetach();
+    }
+
 }

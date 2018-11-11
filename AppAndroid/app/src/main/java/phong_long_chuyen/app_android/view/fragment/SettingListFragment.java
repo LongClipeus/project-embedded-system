@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,7 @@ import java.util.List;
 import phong_long_chuyen.app_android.R;
 import phong_long_chuyen.app_android.adapter.SettingListAdapter;
 import phong_long_chuyen.app_android.model.entity.SettingEntity;
-
-import static phong_long_chuyen.app_android.config.Define.LOCK_SCREEN_FRAGMENT;
-import static phong_long_chuyen.app_android.config.Define.TAG_LOCK_SCREEN_FRAGMENT;
+import phong_long_chuyen.app_android.view.activity.SettingView;
 
 public class SettingListFragment extends Fragment {
 
@@ -75,15 +74,15 @@ public class SettingListFragment extends Fragment {
         adapter.setOnItemClickedListener(new SettingList() {
             @Override
             public void onClickItem(int index) {
+                SettingView settingView = (SettingView) mContext;
                 switch (index) {
                     case 0: {
-                        mFragmentTransaction.replace(R.id.frame_setting,
-                                new LockScreenFragment(), TAG_LOCK_SCREEN_FRAGMENT);
-                        mFragmentTransaction.addToBackStack(LOCK_SCREEN_FRAGMENT);
-                        mFragmentTransaction.commit();
+                        // call back function lockScreen() in Setting activity
+                        settingView.lockScreen();
                         break;
                     }
                     case 1: {
+                        Toast.makeText(mContext, "test test", Toast.LENGTH_LONG).show();
                         break;
                     }
                     case 2: {
@@ -95,6 +94,12 @@ public class SettingListFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        getFragmentManager().popBackStack();
     }
 
 }

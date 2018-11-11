@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">App-Android</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- activity_login-->
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="ok">Ok</string>
+
+    <string name="enter_password">Enter password</string>
+    <string name="no_password">No password</string>
+    <string name="create_password">Create password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="retype_password">Retype password</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="remove_password">Remove password success</string>
+    <string name="fail_del_password">Can not delete password</string>
+
+    <string name="fail_login">Login fail</string>
+
+    <!-- activity_main -->
+    <string name="no_internet">No internet connection</string>
+
+    <!-- SettingListFragment -->
+    <string name="no_data">No data</string>
+    
+    <!-- LockScreenFragment -->
+    <string name="change">change</string>
+
+    <!-- activity_main_drawable -->
+    <string name="setting">Setting</string>
+
+    <!-- activity_setting -->
+    <string name="icon">icon</string>
+    <string name="lock_screen">Lock screen</string>
+
+    <!-- CreatePasswordFragment -->
+    <string name="new_passwd">New password</string>
+    <string name="confirm_passwd">Confirm password</string>
+
+    <!-- fragment_password -->
+    <string name="logo">Logo</string>
+    <string name="back">Back</string>
+
+</resources>

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,16 +46,14 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_password, container, false);
 
+        Log.d("test", "onCreateView");
+        Log.d("test", "settinglist fragment: " + mContext);
+        Toast.makeText(mContext, "onCreateView CreatePasswordFragment", Toast.LENGTH_LONG).show();
+
         initView(view);
         addEvent();
 
         return view;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getFragmentManager().popBackStack();
     }
 
     private void initView(View view) {
@@ -76,6 +75,7 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
         mEdNewPassword.setHint(R.string.new_passwd);
         mEdConfirmPassword.setHint(R.string.confirm_passwd);
 
+        checkPasswd = false;
     }
 
     private void addEvent() {
@@ -95,6 +95,8 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        Log.d("test", "onclick: ");
+        Toast.makeText(mContext, "hello", Toast.LENGTH_LONG).show();
         switch (view.getId()) {
             case R.id.btn_ok: {
                 if (checkPasswd) {
@@ -144,18 +146,20 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
             }
             default: {
                 passWd += ((Button) view).getText().toString();
-                if (checkPasswd)
+                if (checkPasswd) {
                     mEdConfirmPassword.setText(passWd);
-                else
+                } else {
                     mEdNewPassword.setText(passWd);
+                }
+                Log.d("test", "passWd: " + passWd + "\n");
             }
         }
     }
 
     @Override
     public void onDetach() {
-        getFragmentManager().popBackStack();
         super.onDetach();
+        getFragmentManager().popBackStack();
     }
 
 }

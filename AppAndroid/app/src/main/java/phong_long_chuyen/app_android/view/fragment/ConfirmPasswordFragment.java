@@ -53,12 +53,6 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
         return view;
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getFragmentManager().popBackStack();
-    }
-
     private void initView(View view) {
         mEdConfirmPassword = view.findViewById(R.id.ed_password_2);
         mIbBackSpace = view.findViewById(R.id.ib_back_space);

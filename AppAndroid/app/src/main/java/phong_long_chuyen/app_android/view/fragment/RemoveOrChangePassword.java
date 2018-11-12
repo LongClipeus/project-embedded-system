@@ -63,7 +63,12 @@ public class RemoveOrChangePassword extends Fragment implements View.OnClickList
         } else if (v.getId() == R.id.btn_change_password) {
             SettingView settingView = (SettingView) mContext;
             settingView.changePassword();
-
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        getFragmentManager().popBackStack(STACK_SETTING_LIST_FRAGMENT, 0);
     }
 }

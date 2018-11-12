@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             default: {
                 mPassWord += ((Button) view).getText() + "";
             }
-            mEdPassword.setText(mPassWord);
         }
+        mEdPassword.setText(mPassWord);
     }
 }

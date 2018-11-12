@@ -126,7 +126,6 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
                         passWd = "";
                     }
                 }
-
                 break;
             }
             case R.id.ib_back_space: {
@@ -134,19 +133,15 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
                 if (!passWd.equals("")) {
                     passWd = passWd.substring(0, passWd.length() - 1);
                 }
-                if (checkPasswd)
-                    mEdConfirmPassword.setText(passWd);
-                else
-                    mEdNewPassword.setText(passWd);
                 break;
             }
             default: {
                 passWd += ((Button) view).getText().toString();
-                if (checkPasswd) {
-                    mEdConfirmPassword.setText(passWd);
-                } else {
-                    mEdNewPassword.setText(passWd);
-                }
+            }
+            if (checkPasswd) {
+                mEdConfirmPassword.setText(passWd);
+            } else {
+                mEdNewPassword.setText(passWd);
             }
         }
     }

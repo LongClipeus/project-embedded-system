@@ -108,8 +108,8 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
             default: {
                 passWd += ((Button) view).getText().toString();
             }
-            mEdConfirmPassword.setText(passWd);
         }
+        mEdConfirmPassword.setText(passWd);
     }
 
 }

@@ -1,10 +1,10 @@
 package phong_long_chuyen.app_android.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +16,14 @@ import android.widget.Toast;
 import phong_long_chuyen.app_android.R;
 import phong_long_chuyen.app_android.presenter.PasswordPreIm;
 
+import static phong_long_chuyen.app_android.config.Define.STACK_SETTING_LIST_FRAGMENT;
+
+@SuppressLint("ValidFragment")
 public class CreatePasswordFragment extends Fragment implements View.OnClickListener {
 
-    private Context mContext = getActivity();
+    private Context mContext;
     private String passWd = "";
     private String text1;
-    private String text2;
     private boolean checkPasswd;
 
     private EditText mEdNewPassword;
@@ -39,20 +41,19 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
     private Button mBtn_0;
     private Button mBtnOk;
 
+    @SuppressLint("ValidFragment")
+    public CreatePasswordFragment(Context context) {
+        this.mContext = context;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_password, container, false);
-
-        Log.d("test", "onCreateView");
-        Log.d("test", "settinglist fragment: " + mContext);
-        Toast.makeText(mContext, "onCreateView CreatePasswordFragment", Toast.LENGTH_LONG).show();
-
         initView(view);
         addEvent();
-
         return view;
     }
 
@@ -71,44 +72,39 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
         mBtn_9 = view.findViewById(R.id.btn_9);
         mBtn_0 = view.findViewById(R.id.btn_0);
         mBtnOk = view.findViewById(R.id.btn_ok);
-
         mEdNewPassword.setHint(R.string.new_passwd);
         mEdConfirmPassword.setHint(R.string.confirm_passwd);
-
         checkPasswd = false;
     }
 
     private void addEvent() {
-        mIbBackSpace.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_1.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_2.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_3.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_4.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_5.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_6.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_7.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_8.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_9.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_0.setOnClickListener((View.OnClickListener) mContext);
-        mBtnOk.setOnClickListener((View.OnClickListener) mContext);
+        mIbBackSpace.setOnClickListener(this);
+        mBtn_1.setOnClickListener(this);
+        mBtn_2.setOnClickListener(this);
+        mBtn_3.setOnClickListener(this);
+        mBtn_4.setOnClickListener(this);
+        mBtn_5.setOnClickListener(this);
+        mBtn_6.setOnClickListener(this);
+        mBtn_7.setOnClickListener(this);
+        mBtn_8.setOnClickListener(this);
+        mBtn_9.setOnClickListener(this);
+        mBtn_0.setOnClickListener(this);
+        mBtnOk.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Log.d("test", "onclick: ");
-        Toast.makeText(mContext, "hello", Toast.LENGTH_LONG).show();
         switch (view.getId()) {
             case R.id.btn_ok: {
                 if (checkPasswd) {
-                    text2 = mEdConfirmPassword.getText().toString();
+                    String text2 = mEdConfirmPassword.getText().toString();
                     if (text2.equals("")) {
                         Toast.makeText(mContext, R.string.no_password, Toast.LENGTH_SHORT).show();
                     } else {
                         if (text2.equals(text1)) {
                             PasswordPreIm passwordPreIm = new PasswordPreIm(mContext);
                             passwordPreIm.savePassword(text2);
-                            // back to fragment previous
-                            getFragmentManager().popBackStack();
+                            getFragmentManager().popBackStack(STACK_SETTING_LIST_FRAGMENT, 0);
                         } else {
                             // Invalid password
                             passWd = "";
@@ -151,15 +147,8 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
                 } else {
                     mEdNewPassword.setText(passWd);
                 }
-                Log.d("test", "passWd: " + passWd + "\n");
             }
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        getFragmentManager().popBackStack();
     }
 
 }

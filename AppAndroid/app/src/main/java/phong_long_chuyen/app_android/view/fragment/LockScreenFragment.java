@@ -1,5 +1,6 @@
 package phong_long_chuyen.app_android.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -23,6 +24,7 @@ import phong_long_chuyen.app_android.model.entity.SettingEntity;
 import static phong_long_chuyen.app_android.config.Define.STACK_CREATE_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.TRAN_CREATE_PASSWORD_FRAGMENT;
 
+@SuppressLint("ValidFragment")
 public class LockScreenFragment extends Fragment {
 
     private RecyclerView mRvSettingList;
@@ -32,6 +34,11 @@ public class LockScreenFragment extends Fragment {
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
+
+    @SuppressLint("ValidFragment")
+    public LockScreenFragment(Context context) {
+        this.mContext = context;
+    }
 
     @Nullable
     @Override
@@ -49,7 +56,6 @@ public class LockScreenFragment extends Fragment {
 
     private void initView() {
         mRvSettingList = mView.findViewById(R.id.rv_setting_list);
-        mContext = getActivity();
         mSettingList = new ArrayList<>();
 
         mFragmentManager = this.getFragmentManager();
@@ -78,7 +84,7 @@ public class LockScreenFragment extends Fragment {
                 switch (index) {
                     case 0: {
                         mFragmentTransaction.replace(R.id.frame_setting,
-                                new CreatePasswordFragment(), TRAN_CREATE_PASSWORD_FRAGMENT);
+                                new CreatePasswordFragment(mContext), TRAN_CREATE_PASSWORD_FRAGMENT);
                         mFragmentTransaction.addToBackStack(STACK_CREATE_PASSWORD_FRAGMENT);
                         mFragmentTransaction.commit();
                         break;
@@ -95,12 +101,6 @@ public class LockScreenFragment extends Fragment {
                 }
             }
         });
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        getFragmentManager().popBackStack();
     }
 
 }

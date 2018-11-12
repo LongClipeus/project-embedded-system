@@ -1,8 +1,7 @@
 package phong_long_chuyen.app_android.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,15 +15,13 @@ import android.widget.Toast;
 
 import phong_long_chuyen.app_android.R;
 import phong_long_chuyen.app_android.presenter.PasswordPreIm;
+import phong_long_chuyen.app_android.view.activity.SettingView;
 
-import static phong_long_chuyen.app_android.config.Define.STACK_CREATE_PASSWORD_FRAGMENT;
-import static phong_long_chuyen.app_android.config.Define.TRAN_CREATE_PASSWORD_FRAGMENT;
-
+@SuppressLint("ValidFragment")
 public class ConfirmPasswordFragment extends Fragment implements View.OnClickListener {
 
-    private Context mContext = getActivity();
+    private Context mContext;
     private String passWd = "";
-    private boolean removePasswd;
 
     private EditText mEdConfirmPassword;
     private ImageButton mIbBackSpace;
@@ -40,16 +37,19 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
     private Button mBtn_0;
     private Button mBtnOk;
 
+    @SuppressLint("ValidFragment")
+    public ConfirmPasswordFragment(Context context) {
+        this.mContext = context;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_password, container, false);
-
         initView(view);
         addEvent();
-
         return view;
     }
 
@@ -67,25 +67,22 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
         mBtn_9 = view.findViewById(R.id.btn_9);
         mBtn_0 = view.findViewById(R.id.btn_0);
         mBtnOk = view.findViewById(R.id.btn_ok);
-
         mEdConfirmPassword.setHint(R.string.confirm_passwd);
-
-        removePasswd = true;
-
     }
 
     private void addEvent() {
-        mIbBackSpace.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_1.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_2.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_3.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_4.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_5.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_6.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_7.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_8.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_9.setOnClickListener((View.OnClickListener) mContext);
-        mBtn_0.setOnClickListener((View.OnClickListener) mContext);
+        mIbBackSpace.setOnClickListener(this);
+        mBtn_1.setOnClickListener(this);
+        mBtn_2.setOnClickListener(this);
+        mBtn_3.setOnClickListener(this);
+        mBtn_4.setOnClickListener(this);
+        mBtn_5.setOnClickListener(this);
+        mBtn_6.setOnClickListener(this);
+        mBtn_7.setOnClickListener(this);
+        mBtn_8.setOnClickListener(this);
+        mBtn_9.setOnClickListener(this);
+        mBtn_0.setOnClickListener(this);
+        mBtnOk.setOnClickListener(this);
     }
 
     @Override
@@ -94,25 +91,8 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
             case R.id.btn_ok: {
                 PasswordPreIm passwordPreIm = new PasswordPreIm(mContext);
                 if (passwordPreIm.checkPass(passWd)) {
-                    if (removePasswd) {   // remove password
-                        if (passwordPreIm.removePassword()) {
-                            Toast.makeText(mContext, R.string.remove_password, Toast.LENGTH_SHORT)
-                                    .show();
-                        } else {
-                            Toast.makeText(mContext, R.string.fail_del_password, Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                        // back to fragment previous
-                        getFragmentManager().popBackStack();
-                    } else {    // change password
-                        FragmentManager fragmentManager = this.getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.frame_setting, new CreatePasswordFragment(),
-                                TRAN_CREATE_PASSWORD_FRAGMENT);
-                        fragmentTransaction.addToBackStack(STACK_CREATE_PASSWORD_FRAGMENT);
-                        fragmentTransaction.commit();
-
-                    }
+                    SettingView settingView = (SettingView) mContext;
+                    settingView.removeOrChangePasswd();
                 } else {
                     Toast.makeText(mContext, R.string.incorrect_password, Toast.LENGTH_SHORT).show();
                     passWd = "";
@@ -130,12 +110,6 @@ public class ConfirmPasswordFragment extends Fragment implements View.OnClickLis
             }
             mEdConfirmPassword.setText(passWd);
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        getFragmentManager().popBackStack();
     }
 
 }

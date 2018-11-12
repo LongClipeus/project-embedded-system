@@ -1,5 +1,6 @@
 package phong_long_chuyen.app_android.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -8,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,15 +23,21 @@ import phong_long_chuyen.app_android.adapter.SettingListAdapter;
 import phong_long_chuyen.app_android.model.entity.SettingEntity;
 import phong_long_chuyen.app_android.view.activity.SettingView;
 
+@SuppressLint("ValidFragment")
 public class SettingListFragment extends Fragment {
 
+    private Context mContext;
     private RecyclerView mRvSettingList;
     private List<SettingEntity> mSettingList;
-    private Context mContext;
     private View mView;
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
+
+    @SuppressLint("ValidFragment")
+    public SettingListFragment(Context context) {
+        this.mContext = context;
+    }
 
     @Nullable
     @Override
@@ -39,21 +45,16 @@ public class SettingListFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         mView = inflater.inflate(R.layout.fragment_setting_list, container, false);
-
         initView();
         setValueItemSetting();
         setLayoutSettings();
-
         return mView;
     }
 
     private void initView() {
-
-        Log.d("test", "settinglist fragment: " + mContext);
         mRvSettingList = mView.findViewById(R.id.rv_setting_list);
         mContext = getActivity();
         mSettingList = new ArrayList<>();
-
         mFragmentManager = this.getFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
     }
@@ -97,12 +98,6 @@ public class SettingListFragment extends Fragment {
                 }
             }
         });
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        getFragmentManager().popBackStack();
     }
 
 }

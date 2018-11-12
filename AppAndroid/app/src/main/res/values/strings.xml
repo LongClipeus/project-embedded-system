@@ -27,7 +27,7 @@
     <string name="invalid_password">Invalid password</string>
     <string name="retype_password">Retype password</string>
     <string name="incorrect_password">Incorrect password</string>
-    <string name="remove_password">Remove password success</string>
+    <string name="rm_passwd_success">Remove password success</string>
     <string name="fail_del_password">Can not delete password</string>
 
     <string name="fail_login">Login fail</string>
@@ -55,5 +55,9 @@
     <!-- fragment_password -->
     <string name="logo">Logo</string>
     <string name="back">Back</string>
+
+    <!-- fragment_remove_or_change_passwd -->
+    <string name="remove_passwd">Remove password</string>
+    <string name="change_passwd">Change password</string>
 
 </resources>

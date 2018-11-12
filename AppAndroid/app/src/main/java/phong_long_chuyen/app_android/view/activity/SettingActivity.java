@@ -9,13 +9,18 @@ import phong_long_chuyen.app_android.R;
 import phong_long_chuyen.app_android.presenter.PasswordPreIm;
 import phong_long_chuyen.app_android.view.fragment.ConfirmPasswordFragment;
 import phong_long_chuyen.app_android.view.fragment.CreatePasswordFragment;
+import phong_long_chuyen.app_android.view.fragment.RemoveOrChangePassword;
 import phong_long_chuyen.app_android.view.fragment.SettingListFragment;
 
+import static phong_long_chuyen.app_android.config.Define.STACK_CHANGE_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.STACK_CONFIRM_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.STACK_CREATE_PASSWORD_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.STACK_REMOVE_OR_CHANGE_PASSWORD;
 import static phong_long_chuyen.app_android.config.Define.STACK_SETTING_LIST_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.TRAN_CHANGE_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.TRAN_CONFIRM_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.TRAN_CREATE_PASSWORD_FRAGMENT;
+import static phong_long_chuyen.app_android.config.Define.TRAN_REMOVE_OR_CHANGE_PASSWORD;
 import static phong_long_chuyen.app_android.config.Define.TRAN_SETTING_LIST_FRAGMENT;
 
 public class SettingActivity extends AppCompatActivity implements SettingView {
@@ -40,7 +45,7 @@ public class SettingActivity extends AppCompatActivity implements SettingView {
 
     private void fragSettingList() {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_setting, new SettingListFragment(),
+        fragmentTransaction.replace(R.id.frame_setting, new SettingListFragment(this),
                 TRAN_SETTING_LIST_FRAGMENT);
         fragmentTransaction.addToBackStack(STACK_SETTING_LIST_FRAGMENT);
         fragmentTransaction.commit();
@@ -52,17 +57,45 @@ public class SettingActivity extends AppCompatActivity implements SettingView {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         if (!passwordPreIm.isPassword()) {
             fragmentTransaction.replace(R.id.frame_setting,
-                    new CreatePasswordFragment(),
+                    new CreatePasswordFragment(this),
                     TRAN_CREATE_PASSWORD_FRAGMENT);
             fragmentTransaction.addToBackStack(STACK_CREATE_PASSWORD_FRAGMENT);
         } else {
             fragmentTransaction.replace(R.id.frame_setting,
-                    new ConfirmPasswordFragment(),
+                    new ConfirmPasswordFragment(this),
                     TRAN_CONFIRM_PASSWORD_FRAGMENT);
             fragmentTransaction.addToBackStack(STACK_CONFIRM_PASSWORD_FRAGMENT);
         }
         fragmentTransaction.commit();
-
     }
 
+    @Override
+    public void removeOrChangePasswd() {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_setting,
+                new RemoveOrChangePassword(this),
+                TRAN_REMOVE_OR_CHANGE_PASSWORD);
+        fragmentTransaction.addToBackStack(STACK_REMOVE_OR_CHANGE_PASSWORD);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void changePassword() {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_setting,
+                new CreatePasswordFragment(this),
+                TRAN_CHANGE_PASSWORD_FRAGMENT);
+        fragmentTransaction.addToBackStack(STACK_CHANGE_PASSWORD_FRAGMENT);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 1) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+            finish();
+        }
+    }
 }

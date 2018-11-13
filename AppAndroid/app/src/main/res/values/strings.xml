@@ -78,4 +78,9 @@
     <!-- SignInFragment -->
     <string name="no_email_password">Please enter email and password</string>
 
+    <!-- content_main -->
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="gas">Gas</string>
+
 </resources>

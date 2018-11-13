@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "1065073590637-gc75sftb6domhn0t3neguebd9bc7o752.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "phong_long_chuyen.app_android",
+            "certificate_hash": "d4b917baeff57721b5dbe09e879222a869eb1405"
+          }
+        },
+        {
           "client_id": "1065073590637-b887m00qnnneqn1d01gf4cklsqk5ui07.apps.googleusercontent.com",
           "client_type": 3
         }

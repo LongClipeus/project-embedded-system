@@ -5,4 +5,7 @@ public interface SettingView {
     void lockScreen();
     void removeOrChangePasswd();
     void changePassword();
+    void signIn();
+    void signUp();
+    void detailAccount();
 }

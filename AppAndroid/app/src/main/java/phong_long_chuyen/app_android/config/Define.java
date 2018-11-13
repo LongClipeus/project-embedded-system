@@ -26,6 +26,15 @@ public class Define {
     public static final String TRAN_REMOVE_OR_CHANGE_PASSWORD = "Tran_remove_or_change_password";
     public static final String STACK_REMOVE_OR_CHANGE_PASSWORD = "Stack_remove_or_change_password";
 
+    public static final String TRAN_SIGN_IN = "Tran_sign_in";
+    public static final String STACK_SIGN_IN = "Stack_sign_in";
+
+        public static final String TRAN_SIGN_UP = "Tran_sign_up";
+        public static final String STACK_SIGN_UP = "Stack_sign_up";
+
+    public static final String TRAN_DETAIL_ACCOUNT= "Tran_detail_account";
+    public static final String STACK_DETAIL_ACCOUNT = "Stack_detail_account";
+
     public static final String TRAN_LOCK_SCREEN_FRAGMENT = "Tran_lock_screen_fragment";
     public static final String STACK_LOCK_SCREEN_FRAGMENT = "Stack_lock_screen_fragment";
 

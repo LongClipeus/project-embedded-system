@@ -138,11 +138,11 @@ public class CreatePasswordFragment extends Fragment implements View.OnClickList
             default: {
                 passWd += ((Button) view).getText().toString();
             }
-            if (checkPasswd) {
-                mEdConfirmPassword.setText(passWd);
-            } else {
-                mEdNewPassword.setText(passWd);
-            }
+        }
+        if (checkPasswd) {
+            mEdConfirmPassword.setText(passWd);
+        } else {
+            mEdNewPassword.setText(passWd);
         }
     }
 

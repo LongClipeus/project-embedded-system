@@ -6,8 +6,14 @@ public class Define {
     public static final String WIFI = "WIFI";
     public static final String MOBILE = "MOBILE";
 
+    // nguong canh bao
+    public static final float GAS_THRESHOLD = 70;
+    public static final float FIRE_THRESHOLD = 70;
+
     // PasswordPreIm
     public static final String PASSWORD = "Password";
+    public static final String GAS_THRES = "gas_threshold";
+    public static final String FIRE_THRES = "fire_threshold";
     public static final String PREFERENCES_DATA = "preferences_data";
 
     // fragment
@@ -29,11 +35,14 @@ public class Define {
     public static final String TRAN_SIGN_IN = "Tran_sign_in";
     public static final String STACK_SIGN_IN = "Stack_sign_in";
 
-        public static final String TRAN_SIGN_UP = "Tran_sign_up";
-        public static final String STACK_SIGN_UP = "Stack_sign_up";
+    public static final String TRAN_SIGN_UP = "Tran_sign_up";
+    public static final String STACK_SIGN_UP = "Stack_sign_up";
 
-    public static final String TRAN_DETAIL_ACCOUNT= "Tran_detail_account";
+    public static final String TRAN_DETAIL_ACCOUNT = "Tran_detail_account";
     public static final String STACK_DETAIL_ACCOUNT = "Stack_detail_account";
+
+    public static final String TRAN_THRESHOLD_VALUE = "Tran_threshold_value";
+    public static final String STACK_THRESHOLD_VALUE = "Stack_threshold_value";
 
     public static final String TRAN_LOCK_SCREEN_FRAGMENT = "Tran_lock_screen_fragment";
     public static final String STACK_LOCK_SCREEN_FRAGMENT = "Stack_lock_screen_fragment";

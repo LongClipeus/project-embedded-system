@@ -7,6 +7,8 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorGray">#979797</color>
+    <color name="colorRed">#ff0000</color>
+    <color name="colorGreen">#06dc02</color>
 
     <color name="bgrButtonLogin">#813590ff</color>
     <color name="colorBtnPasswd">#000</color>

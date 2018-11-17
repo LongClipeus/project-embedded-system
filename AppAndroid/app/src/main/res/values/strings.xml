@@ -34,6 +34,8 @@
 
     <!-- activity_main -->
     <string name="no_internet">No internet connection</string>
+    <string name="warning">Warning</string>
+    <string name="safe">Safe</string>
 
     <!-- SettingListFragment -->
     <string name="no_data">No data</string>
@@ -48,6 +50,7 @@
     <string name="icon">icon</string>
     <string name="lock_screen">Lock screen</string>
     <string name="account">Account</string>
+    <string name="threshold">Threshold</string>
 
     <!-- CreatePasswordFragment -->
     <string name="new_passwd">New password</string>
@@ -75,6 +78,16 @@
     <string name="password">Password</string>
     <string name="create">Create</string>
 
+    <!-- fragment_threshold -->
+    <string name="fire_threshold">Fire alarm threshold</string>
+    <string name="gas_threshold">Gas alarm threshold</string>
+    <string name="set_default">Set default</string>
+    <string name="save">Save</string>
+
+    <!-- ThresholdFragment -->
+    <string name="save_thre_success">Save threshold successful</string>
+    <string name="can_not_save_thre">Can\'t save threshold</string>
+
     <!-- SignInFragment -->
     <string name="no_email_password">Please enter email and password</string>
 
@@ -82,5 +95,6 @@
     <string name="temperature">Temperature</string>
     <string name="humidity">Humidity</string>
     <string name="gas">Gas</string>
+    <string name="led_state">led state</string>
 
 </resources>

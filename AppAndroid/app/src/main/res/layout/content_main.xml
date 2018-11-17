@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="28*C"
         android:textColor="@color/colorBlack"
         android:textSize="25sp" />
 
@@ -52,7 +51,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@id/tv_tempt_number"
-        android:text="75%"
         android:textColor="@color/colorBlack"
         android:textSize="25sp" />
 
@@ -76,10 +74,47 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@id/tv_humidity_number"
-        android:text="30"
         android:textColor="@color/colorBlack"
         android:textSize="25sp" />
 
-    
+    <ImageView
+        android:id="@+id/iv_gas_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_gas_number"
+        android:contentDescription="@string/led_state"
+        android:src="@drawable/custom_led_state" />
+
+    <TextView
+        android:id="@+id/tv_gas_safe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_gas_number"
+        android:layout_toEndOf="@id/iv_gas_state"
+        android:layout_toRightOf="@id/iv_gas_state"
+        android:textColor="@color/colorBlack"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/iv_fire_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_gas_state"
+        android:contentDescription="@string/led_state"
+        android:src="@drawable/custom_led_state" />
+
+    <TextView
+        android:id="@+id/tv_fire_safe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_gas_safe"
+        android:layout_toEndOf="@id/iv_fire_state"
+        android:layout_toRightOf="@id/iv_fire_state"
+        android:textColor="@color/colorBlack"
+        android:textSize="25sp" />
 
 </RelativeLayout>

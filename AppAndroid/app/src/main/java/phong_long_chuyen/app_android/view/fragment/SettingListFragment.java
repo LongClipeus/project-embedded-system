@@ -64,7 +64,7 @@ public class SettingListFragment extends Fragment {
     private void setValueItemSetting() {
         mSettingList.add(new SettingEntity(R.drawable.ic_screen_lock_portrait, R.string.lock_screen));
         mSettingList.add(new SettingEntity(R.drawable.ic_screen_lock_portrait, R.string.account));
-        mSettingList.add(new SettingEntity(R.drawable.ic_screen_lock_portrait, R.string.lock_screen));
+        mSettingList.add(new SettingEntity(R.drawable.ic_screen_lock_portrait, R.string.threshold));
         mSettingList.add(new SettingEntity(R.drawable.ic_screen_lock_portrait, R.string.lock_screen));
     }
 
@@ -99,6 +99,7 @@ public class SettingListFragment extends Fragment {
                         break;
                     }
                     case 2: {
+                        settingView.thresholdValue();
                         break;
                     }
                     case 3: {

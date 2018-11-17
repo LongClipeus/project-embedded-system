@@ -14,6 +14,7 @@ import phong_long_chuyen.app_android.view.fragment.RemoveOrChangePassword;
 import phong_long_chuyen.app_android.view.fragment.SettingListFragment;
 import phong_long_chuyen.app_android.view.fragment.SignInFragment;
 import phong_long_chuyen.app_android.view.fragment.SignUpFragment;
+import phong_long_chuyen.app_android.view.fragment.ThresholdFragment;
 
 import static phong_long_chuyen.app_android.config.Define.STACK_CHANGE_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.STACK_CONFIRM_PASSWORD_FRAGMENT;
@@ -23,6 +24,7 @@ import static phong_long_chuyen.app_android.config.Define.STACK_REMOVE_OR_CHANGE
 import static phong_long_chuyen.app_android.config.Define.STACK_SETTING_LIST_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.STACK_SIGN_IN;
 import static phong_long_chuyen.app_android.config.Define.STACK_SIGN_UP;
+import static phong_long_chuyen.app_android.config.Define.STACK_THRESHOLD_VALUE;
 import static phong_long_chuyen.app_android.config.Define.TRAN_CHANGE_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.TRAN_CONFIRM_PASSWORD_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.TRAN_CREATE_PASSWORD_FRAGMENT;
@@ -31,6 +33,7 @@ import static phong_long_chuyen.app_android.config.Define.TRAN_REMOVE_OR_CHANGE_
 import static phong_long_chuyen.app_android.config.Define.TRAN_SETTING_LIST_FRAGMENT;
 import static phong_long_chuyen.app_android.config.Define.TRAN_SIGN_IN;
 import static phong_long_chuyen.app_android.config.Define.TRAN_SIGN_UP;
+import static phong_long_chuyen.app_android.config.Define.TRAN_THRESHOLD_VALUE;
 
 public class SettingActivity extends AppCompatActivity implements SettingView {
 
@@ -118,6 +121,15 @@ public class SettingActivity extends AppCompatActivity implements SettingView {
         fragmentTransaction.replace(R.id.frame_setting, new DetailAccountFragment(this),
                 TRAN_DETAIL_ACCOUNT);
         fragmentTransaction.addToBackStack(STACK_DETAIL_ACCOUNT);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void thresholdValue() {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_setting, new ThresholdFragment(this),
+                TRAN_THRESHOLD_VALUE);
+        fragmentTransaction.addToBackStack(STACK_THRESHOLD_VALUE);
         fragmentTransaction.commit();
     }
 

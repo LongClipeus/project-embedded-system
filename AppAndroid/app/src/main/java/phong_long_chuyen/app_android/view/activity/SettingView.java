@@ -8,4 +8,5 @@ public interface SettingView {
     void signIn();
     void signUp();
     void detailAccount();
+    void thresholdValue();
 }

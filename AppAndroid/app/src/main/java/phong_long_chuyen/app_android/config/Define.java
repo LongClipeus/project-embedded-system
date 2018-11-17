@@ -16,6 +16,9 @@ public class Define {
     public static final String FIRE_THRES = "fire_threshold";
     public static final String PREFERENCES_DATA = "preferences_data";
 
+    // WarningService
+    public static final int WARNING_TIME = 30;
+
     // fragment
     public static final String TRAN_CREATE_PASSWORD_FRAGMENT = "Tran_create_password_fragment";
     public static final String STACK_CREATE_PASSWORD_FRAGMENT = "Stack_create_password_fragment";

@@ -37,9 +37,12 @@
     <string name="warning">Warning</string>
     <string name="safe">Safe</string>
 
+    <!-- activity_warning -->
+    <string name="cancel">Cancel</string>
+
     <!-- SettingListFragment -->
     <string name="no_data">No data</string>
-    
+
     <!-- LockScreenFragment -->
     <string name="change">change</string>
 
